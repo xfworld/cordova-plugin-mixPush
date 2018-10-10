@@ -1,0 +1,8 @@
+.gradle
+/logs/
+/build/
+/.idea/
+/gradle/
+*.iml
+*.ipr
+*.iws

@@ -21,9 +21,9 @@
             <uses-permission android:name="android.permission.READ_PHONE_STATE" />
             <uses-permission android:name="android.permission.GET_TASKS" />
             <uses-permission android:name="android.permission.VIBRATE"/>
-            <permission android:name="$PACKAGE_NAME.permission.MIPUSH_RECEIVE" android:protectionLevel="signature" />
+            <permission android:name="$ANDROID_PACKAGE_NAME.permission.MIPUSH_RECEIVE" android:protectionLevel="signature" />
             <!--这里com.xiaomi.mipushdemo改成app的包名-->
-            <uses-permission android:name="$PACKAGE_NAME.permission.MIPUSH_RECEIVE" />
+            <uses-permission android:name="$ANDROID_PACKAGE_NAME.permission.MIPUSH_RECEIVE" />
             <!--这里com.xiaomi.mipushdemo改成app的包名-->
         </config-file>
         <config-file target="AndroidManifest.xml" parent="/manifest/application">
@@ -77,11 +77,11 @@
 
         </config-file>
         <config-file parent="/*" target="AndroidManifest.xml"></config-file>
-        <source-file src="src/android/MixPushPlugin.java" target-dir="src/com/dmc/push" />
-        <source-file src="src/android/HuaWeiImpl.java" target-dir="src/com/dmc/push" />
-        <source-file src="src/android/IPush.java" target-dir="src/com/dmc/push" />
-        <source-file src="src/android/XiaoMiImpl.java" target-dir="src/com/dmc/push" />
-        <source-file src="src/android/XiaoMiReceiver.java" target-dir="src/com/dmc/push" />
+        <source-file src="src/android/MixPushPlugin.java" target-dir="src/android" />
+        <source-file src="src/android/HuaWeiImpl.java" target-dir="src/android" />
+        <source-file src="src/android/IPush.java" target-dir="src/android" />
+        <source-file src="src/android/XiaoMiImpl.java" target-dir="src/android" />
+        <source-file src="src/android/XiaoMiReceiver.java" target-dir="src/android" />
         <framework src="me.leolin:ShortcutBadger:1.1.17@aar" />
         <source-file src="src/android/MiPush_SDK_Client_3_4_5.jar" target-dir="libs" />
         <!-- 防止cordova android 7.0 找不到依赖文件的情况 -->
