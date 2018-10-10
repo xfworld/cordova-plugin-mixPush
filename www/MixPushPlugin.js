@@ -3,9 +3,11 @@
 //混合推送，目前支持小米，后续会有华为等推送，怎么加后无需任何代码改动就可兼容多种推送
 
 var cordova = require('cordova');
-var MixPushPlugin = function() {}
 
 
+function MixPushPlugin() {
+
+}
 /*设置推送的引擎 xiaoMi||huaWei
   示例：window.plugins.MixPushPlugin.setPushEngine(["xiaoMi"],successCallback,errorCallback);
  */
@@ -247,13 +249,6 @@ MixPushPlugin.prototype.minusBadgerToSp = function(args,successCallback,errorCal
     cordova.exec(successCallback, errorCallback, 'MixPushPlugin', "minusBadgerToSp", args);
 }
 
-if (!window.plugins) {
-    window.plugins = {}
-}
+var mixPushPlugin = new MixPushPlugin();
 
-if (!window.plugins.MixPushPlugin) {
-    window.plugins.MixPushPlugin = new MixPushPlugin()
-}
-
-
-module.exports = new MixPushPlugin();
+module.exports = mixPushPlugin;
