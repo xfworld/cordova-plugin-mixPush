@@ -2,110 +2,111 @@
 
 //混合推送，目前支持小米，后续会有华为等推送，怎么加后无需任何代码改动就可兼容多种推送
 var MixPushPlugin = function() {}
-
+var cordova = require('cordova');
 
 /*设置推送的引擎 xiaoMi||huaWei
   示例：window.plugins.MixPushPlugin.setPushEngine(["xiaoMi"],successCallback,errorCallback);
  */
 MixPushPlugin.prototype.setPushEngine = function(args,successCallback,errorCallback) {
+    console.log(cordova);
     cordova.exec(successCallback, errorCallback, 'MixPushPlugin', "setPushEngine", args);
 }
 
 /*启动注册推送
 示例：let miId = '288230*****896';
       let miKey = '5901***96';
-      window.plugins.MixPushPlugin.registerPush([miId, miKey],successCallback,errorCallback); 
- */       
+      window.plugins.MixPushPlugin.registerPush([miId, miKey],successCallback,errorCallback);
+ */
 MixPushPlugin.prototype.registerPush = function(args,successCallback,errorCallback) {
     cordova.exec(successCallback, errorCallback, 'MixPushPlugin', "registerPush", args);
 }
 
 /*退出推送
-  示例：window.plugins.MixPushPlugin.exitPush([],successCallback,errorCallback);		
+  示例：window.plugins.MixPushPlugin.exitPush([],successCallback,errorCallback);
 */
 MixPushPlugin.prototype.exitPush = function(args,successCallback,errorCallback) {
     cordova.exec(successCallback, errorCallback, 'MixPushPlugin', "exitPush", args);
 }
 
 /*为指定用户设置userAccount
-  示例：window.plugins.MixPushPlugin.setAccount(["dmc"],successCallback,errorCallback);		
+  示例：window.plugins.MixPushPlugin.setAccount(["dmc"],successCallback,errorCallback);
 */
 MixPushPlugin.prototype.setAccount = function(args,successCallback,errorCallback) {
     cordova.exec(successCallback, errorCallback, 'MixPushPlugin', "setAccount", args);
 }
 
 /*取消指定用户的userAccount。
-  示例：window.plugins.MixPushPlugin.unsetAccount(["dmc"],successCallback,errorCallback);		
+  示例：window.plugins.MixPushPlugin.unsetAccount(["dmc"],successCallback,errorCallback);
 */
 MixPushPlugin.prototype.unsetAccount = function(args,successCallback,errorCallback) {
     cordova.exec(successCallback, errorCallback, 'MixPushPlugin', "unsetAccount", args);
 }
 
 /*获取客户端的RegId。
-  示例：window.plugins.MixPushPlugin.getRegId([],(id)=>{alert(id);}),errorCallback);		
+  示例：window.plugins.MixPushPlugin.getRegId([],(id)=>{alert(id);}),errorCallback);
 */
 MixPushPlugin.prototype.getRegId = function(args,successCallback,errorCallback) {
     cordova.exec(successCallback, errorCallback, 'MixPushPlugin', "getRegId", args);
 }
 
 /*为指定用户设置alias
-  示例：window.plugins.MixPushPlugin.setAlias(["123"],successCallback,errorCallback);		
+  示例：window.plugins.MixPushPlugin.setAlias(["123"],successCallback,errorCallback);
 */
 MixPushPlugin.prototype.setAlias = function(args,successCallback,errorCallback) {
     cordova.exec(successCallback, errorCallback, 'MixPushPlugin', "setAlias", args);
 }
 
 /*取消指定用户的alias
-  示例：window.plugins.MixPushPlugin.unsetAlias(["123"],successCallback,errorCallback);		
+  示例：window.plugins.MixPushPlugin.unsetAlias(["123"],successCallback,errorCallback);
 */
 MixPushPlugin.prototype.unsetAlias = function(args,successCallback,errorCallback) {
     cordova.exec(successCallback, errorCallback, 'MixPushPlugin', "unsetAlias", args);
 }
 
 /*为某个用户设置订阅topic
-  示例：window.plugins.MixPushPlugin.subscribe(["112"],successCallback,errorCallback);		
+  示例：window.plugins.MixPushPlugin.subscribe(["112"],successCallback,errorCallback);
 */
 MixPushPlugin.prototype.subscribe = function(args,successCallback,errorCallback) {
     cordova.exec(successCallback, errorCallback, 'MixPushPlugin', "subscribe", args);
 }
 
 /*取消某个用户的订阅topic
-  示例：window.plugins.MixPushPlugin.unsubscribe(["112"],successCallback,errorCallback);		
+  示例：window.plugins.MixPushPlugin.unsubscribe(["112"],successCallback,errorCallback);
 */
 MixPushPlugin.prototype.unsubscribe = function(args,successCallback,errorCallback) {
     cordova.exec(successCallback, errorCallback, 'MixPushPlugin', "unsubscribe", args);
 }
 
 /*暂停接收MiPush服务推送的消息
-  示例：window.plugins.MixPushPlugin.pausePush([],successCallback,errorCallback);		
+  示例：window.plugins.MixPushPlugin.pausePush([],successCallback,errorCallback);
 */
 MixPushPlugin.prototype.pausePush = function(args,successCallback,errorCallback) {
     cordova.exec(successCallback, errorCallback, 'MixPushPlugin', "pausePush", args);
 }
 
 /*恢复接收MiPush服务推送的消息，这时服务器会把暂停时期的推送消息重新推送过来
-  示例：window.plugins.MixPushPlugin.resumePush([],successCallback,errorCallback);		
+  示例：window.plugins.MixPushPlugin.resumePush([],successCallback,errorCallback);
 */
 MixPushPlugin.prototype.resumePush = function(args,successCallback,errorCallback) {
     cordova.exec(successCallback, errorCallback, 'MixPushPlugin', "resumePush", args);
 }
 
 /*关闭MiPush推送服务，不再维护长连接，服务不可用
-  示例：window.plugins.MixPushPlugin.disablePush([],successCallback,errorCallback);		
+  示例：window.plugins.MixPushPlugin.disablePush([],successCallback,errorCallback);
 */
 MixPushPlugin.prototype.disablePush = function(args,successCallback,errorCallback) {
     cordova.exec(successCallback, errorCallback, 'MixPushPlugin', "disablePush", args);
 }
 
 /*打开 MiPush 推送服务，继续维护长连接
-  示例：window.plugins.MixPushPlugin.enablePush([],successCallback,errorCallback);		
+  示例：window.plugins.MixPushPlugin.enablePush([],successCallback,errorCallback);
 */
 MixPushPlugin.prototype.enablePush = function(args,successCallback,errorCallback) {
     cordova.exec(successCallback, errorCallback, 'MixPushPlugin', "enablePush", args);
 }
 
 /*清除小米推送弹出的通知
-  示例：window.plugins.MixPushPlugin.clearNotification([],successCallback,errorCallback);		
+  示例：window.plugins.MixPushPlugin.clearNotification([],successCallback,errorCallback);
 */
 MixPushPlugin.prototype.clearNotification = function(args,successCallback,errorCallback) {
     cordova.exec(successCallback, errorCallback, 'MixPushPlugin', "clearNotification", args);
@@ -121,9 +122,9 @@ MixPushPlugin.prototype.clearNotificationById = function(args,successCallback,er
 /*启动注册推送成功失败事件监听
   示例： document.addEventListener("MixPushPlugin.onRegisterPush", (data) => {
             if (data&&data.code == 200 ) {
-                console.log('注册成功：' + data.regId);             
+                console.log('注册成功：' + data.regId);
             }
-        }, false); 	
+        }, false);
 */
 MixPushPlugin.prototype.onRegisterPush = function (data) {
   data = JSON.parse(JSON.stringify(data));
@@ -136,7 +137,7 @@ MixPushPlugin.prototype.onRegisterPush = function (data) {
             if (data && data.title) {
                 console.log('来消息了：' + data.title);
             }
-        }, false);	
+        }, false);
 */
 MixPushPlugin.prototype.onNotificationArrived = function (data) {
   data = JSON.parse(JSON.stringify(data));
@@ -149,7 +150,7 @@ MixPushPlugin.prototype.onNotificationArrived = function (data) {
             if (data && data.title) {
                 console.log('点消息了：' + data.title);
             }
-        }, false);	
+        }, false);
 */
 MixPushPlugin.prototype.onNotificationClicked = function (data) {
   data = JSON.parse(JSON.stringify(data));
@@ -162,7 +163,7 @@ MixPushPlugin.prototype.onNotificationClicked = function (data) {
             if (data.code == 200) {
                 console.log("成功");
             }
-        }, false);	
+        }, false);
 */
 MixPushPlugin.prototype.onSetAliasPush = function (data) {
   data = JSON.parse(JSON.stringify(data));
@@ -175,7 +176,7 @@ MixPushPlugin.prototype.onSetAliasPush = function (data) {
             if (data.code == 200) {
                 console.log("成功");
             }
-        }, false);	
+        }, false);
 */
 MixPushPlugin.prototype.onUnSetAliasPush = function (data) {
   data = JSON.parse(JSON.stringify(data));
@@ -184,7 +185,7 @@ MixPushPlugin.prototype.onUnSetAliasPush = function (data) {
 }
 
 /*SetAccount监听事件
-  示例：用法于上面类似	
+  示例：用法于上面类似
 */
 MixPushPlugin.prototype.onSetAccountPush = function (data) {
   data = JSON.parse(JSON.stringify(data));
@@ -193,7 +194,7 @@ MixPushPlugin.prototype.onSetAccountPush = function (data) {
 }
 
 /*UnSetAccount监听事件
-  示例：用法于上面类似	
+  示例：用法于上面类似
 */
 MixPushPlugin.prototype.onUnSetAccountPush = function (data) {
   data = JSON.parse(JSON.stringify(data));
@@ -202,7 +203,7 @@ MixPushPlugin.prototype.onUnSetAccountPush = function (data) {
 }
 
 /*Subscribe监听事件
-  示例：用法于上面类似	
+  示例：用法于上面类似
 */
 MixPushPlugin.prototype.onSubscribePush = function (data) {
   data = JSON.parse(JSON.stringify(data));
@@ -211,7 +212,7 @@ MixPushPlugin.prototype.onSubscribePush = function (data) {
 }
 
 /*UnSubscribe监听事件
-  示例：用法于上面类似	
+  示例：用法于上面类似
 */
 MixPushPlugin.prototype.onUnSubscribePush = function (data) {
   data = JSON.parse(JSON.stringify(data));
