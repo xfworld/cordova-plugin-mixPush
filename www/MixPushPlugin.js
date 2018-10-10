@@ -1,8 +1,10 @@
 
 
 //混合推送，目前支持小米，后续会有华为等推送，怎么加后无需任何代码改动就可兼容多种推送
-var MixPushPlugin = function() {}
+
 var cordova = require('cordova');
+var MixPushPlugin = function() {}
+
 
 /*设置推送的引擎 xiaoMi||huaWei
   示例：window.plugins.MixPushPlugin.setPushEngine(["xiaoMi"],successCallback,errorCallback);
@@ -255,5 +257,3 @@ if (!window.plugins.MixPushPlugin) {
 
 
 module.exports = new MixPushPlugin();
-
-

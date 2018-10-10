@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='utf-8'?>
 <plugin id="cordova-plugin-mixPush" version="1.0.8" xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android">
     <name>MixPush</name>
-    <js-module name="MixPushPlugin" src="www/MixPushPlugin.js">
-        <clobbers target="window.plugins.MixPushPlugin" />
+    <js-module name="mixPushPlugin" src="www/mixPushPlugin.js">
+        <clobbers target="mixPushPlugin" />
     </js-module>
     <preference name="ANDROID_PACKAGE_NAME" />
     <preference name="MI_PUSH_APP_IOS_KEY"/>
