@@ -199,7 +199,7 @@
     @try {
         if(data[@"aps"]) {
             NSDictionary *alertData =  data[@"aps"][@"alert"];
-            
+
             if(alertData) {
                 if([alertData isKindOfClass:[NSString class]]){
                     [dictionary setValue:alertData forKey:@"title"];
@@ -211,9 +211,9 @@
                 }
             }
         }
-        
+
         NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dictionary options:NSJSONWritingPrettyPrinted error:&error];
-        
+
         if (error != nil) {
             NSLog(@"NSDictionary JSONString error: %@", [error localizedDescription]);
         } else {
@@ -222,10 +222,10 @@
     } @catch (NSException *exception) {
         NSLog(@"Exception: %@", exception);
     }
-    
-    
+
+
     NSLog(@"消息：%@",json);
-    NSString *js = [NSString stringWithFormat:@"window.plugins.MixPushPlugin.%@(%@)", type, json];
+    NSString *js = [NSString stringWithFormat:@"window.mixPushPlugin.%@(%@)", type, json];
     NSLog(@"消息JS：%@",js);
     if (SharedMiPushPlugin) {
         dispatch_async(dispatch_get_main_queue(), ^{

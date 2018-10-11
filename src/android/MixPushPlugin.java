@@ -201,8 +201,9 @@ public class MixPushPlugin extends CordovaPlugin {
             return;
         }
         Log.e(TAG, "-------------onNotificationArrived------------------" + jsonObject.toString());
-        String format = "window.plugins.MixPushPlugin.onNotificationArrived(%s);";
+        String format = "window.mixPushPlugin.onNotificationArrived(%s);";
         final String js = String.format(format, jsonObject.toString());
+        Log.e(TAG,"---------invoker--------------" + js);
         instance.cordova.getActivity().runOnUiThread(new Runnable() {
             @Override
             public void run() {
@@ -218,8 +219,9 @@ public class MixPushPlugin extends CordovaPlugin {
             return;
         }
         Log.e(TAG, "-------------onNotificationClicked------------------" + jsonObject.toString());
-        String format = "window.plugins.MixPushPlugin.onNotificationClicked(%s);";
+        String format = "window.mixPushPlugin.onNotificationClicked(%s);";
         final String js = String.format(format, jsonObject.toString());
+        Log.e(TAG,"---------invoker--------------" + js);
         instance.cordova.getActivity().runOnUiThread(new Runnable() {
             @Override
             public void run() {
@@ -240,8 +242,9 @@ public class MixPushPlugin extends CordovaPlugin {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        String format = "window.plugins.MixPushPlugin."+type+"(%s);";
+        String format = "window.mixPushPlugin."+type+"(%s);";
         final String js = String.format(format,jsonObject.toString());
+        Log.e(TAG,"---------invoker--------------" + js);
         instance.cordova.getActivity().runOnUiThread(new Runnable() {
             @Override
             public void run() {

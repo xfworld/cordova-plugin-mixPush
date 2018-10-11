@@ -20,6 +20,49 @@ Cordova 推送，支持设置角标，事件回调。
  cordova plugin add https://github.com/dmcBig/cordova-plugin-mixPush.git --variable ANDROID_PACKAGE_NAME=你的安卓项目包名  --variable MI_PUSH_APP_IOS_ID=你IOS推送id --variable MI_PUSH_APP_IOS_KEY=你的IOS推送Key
 ```
 
+## 注意事项
+``` 注意事项
+  我修改过plugin 的路径信息，将mixPushPlugin进行了大小写区分，小写部分是前端可以进行调用的
+  大写部分，则是后端调用，方便查看
+
+  另外android 申请的包名一定要和项目的包名一致，不然项目在运行中，会出现注册失败的情况；
+  详细情况：
+  参考platforms 下面的android目录，AndroidManifest.xml文件
+  package="com.pobing.message"
+
+  相应的权限设定
+  <permission android:name="com.pobing.message.permission.MIPUSH_RECEIVE" android:protectionLevel="signature" />
+  <uses-permission android:name="com.pobing.message.permission.MIPUSH_RECEIVE" />
+
+  以及应用启动信息：
+
+  code:
+  package com.pobing.message;
+
+  import android.os.Bundle;
+  import org.apache.cordova.CordovaActivity;
+
+  public class MainActivity extends CordovaActivity
+  {
+      @Override
+      public void onCreate(Bundle savedInstanceState)
+      {
+          super.onCreate(savedInstanceState);
+
+          // enable Cordova apps to be started in the background
+          Bundle extras = getIntent().getExtras();
+          if (extras != null && extras.getBoolean("cdvStartInBackground", false)) {
+              moveTaskToBack(true);
+          }
+
+          // Set by <content src="index.html" /> in config.xml
+          loadUrl(launchUrl);
+      }
+  }
+
+```
+
+
 ## Example
 code:
 
@@ -27,11 +70,11 @@ code:
        document.addEventListener('deviceready',push , false);
        function push(){
             var deviceBrand="xiaoMi";//目前只支持小米引擎
-            window.plugins.MixPushPlugin.setPushEngine([deviceBrand]);
+            window.mixPushPlugin.setPushEngine([deviceBrand]);
             var miId = '2882303******08931'; //android id
             var miKey = '57117***2931'; //android key
             //开始启动注册小米推送
-            window.plugins.MixPushPlugin.registerPush([miId, miKey]);
+            window.mixPushPlugin.registerPush([miId, miKey]);
 
             //registerPush事件
            document.addEventListener("MixPushPlugin.onRegisterPush", function onCallBack(data) {
@@ -45,7 +88,7 @@ code:
 
             //设置Alias
             function setAlias(alias) {
-                window.plugins.MixPushPlugin.setAlias([alias]);
+                window.mixPushPlugin.setAlias([alias]);
                 //onSetAliasPush事件
                 document.addEventListener("MixPushPlugin.onSetAliasPush", function onCallBack(data)  {
                     if (data) {
@@ -58,7 +101,7 @@ code:
             //来消息后的事件监听
             document.addEventListener("MixPushPlugin.onNotificationArrived",function onCallBack(data) {
                     if (data && data.title) {
-                        window.plugins.MixPushPlugin.badgerApplyCount([20]);//来消息后把APP图标上的角标数字改成20
+                        window.mixPushPlugin.badgerApplyCount([20]);//来消息后把APP图标上的角标数字改成20
                         console.log('来消息了：' + data.title);
                         alert(data.title);
                     }
@@ -67,7 +110,7 @@ code:
             //点消息后的事件监听
              document.addEventListener("MixPushPlugin.onNotificationClicked", function onCallBack(data) {
                          if (data && data.title) {
-                             window.plugins.MixPushPlugin.badgerApplyCount([0]);//点消息后清空数字
+                             window.mixPushPlugin.badgerApplyCount([0]);//点消息后清空数字
                              console.log('点消息了：' + data.title);
                              alert(data.title);
                          }
@@ -147,10 +190,3 @@ new Message.IOSBuilder()
 .badge(unrecv)//unrecv int类型的值
 
 ```
-
-
-
-
-
-
-

@@ -20,6 +20,8 @@ public class XiaoMiImpl implements IPush {
 
     MixPushPlugin mixPushPlugin;
     private static String TAG = "XiaoMiImpl";
+    private static final String APP_ID = "2882303761517873358";
+    private static final String APP_KEY = "5331787344358";
 
     public XiaoMiImpl(MixPushPlugin mixPushPlugin){
         this.mixPushPlugin=mixPushPlugin;
@@ -27,13 +29,22 @@ public class XiaoMiImpl implements IPush {
 
     @Override
     public void registerPush(CallbackContext callback, Context context, JSONArray args) {
+//        try {
+//            if (shouldInit(context)) {
+//                MiPushClient.registerPush(context, args.getString(0), args.getString(1));
+//            }
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//            callback.error("registerPush");
+//        }
         try {
-            if (shouldInit(context)) {
-                MiPushClient.registerPush(context, args.getString(0), args.getString(1));
-            }
-        } catch (Exception e) {
+            System.out.println(args.getString(0));
+            System.out.println(args.getString(1));
+        }catch(Exception e){
             e.printStackTrace();
-            callback.error("registerPush");
+        }
+        if (shouldInit(context)) {
+            MiPushClient.registerPush(context, APP_ID, APP_KEY);
         }
     }
 
