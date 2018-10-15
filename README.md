@@ -24,7 +24,10 @@ Cordova 推送，支持设置角标，事件回调。
 ``` 注意事项
   我修改过plugin 的路径信息，将mixPushPlugin进行了大小写区分，小写部分是前端可以进行调用的
   大写部分，则是后端调用，方便查看
-
+    
+  android的需要做前端调用的配置，ios 版本则在打包时进行了指定，只需要做registerPush的注册即可
+  配置参数对于IOS来说无效
+   
   另外android 申请的包名一定要和项目的包名一致，不然项目在运行中，会出现注册失败的情况；
   详细情况：
   参考platforms 下面的android目录，AndroidManifest.xml文件
