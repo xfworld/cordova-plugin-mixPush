@@ -82,7 +82,7 @@
         <source-file src="src/android/IPush.java" target-dir="src/com/dmc/push" />
         <source-file src="src/android/XiaoMiImpl.java" target-dir="src/com/dmc/push" />
         <source-file src="src/android/XiaoMiReceiver.java" target-dir="src/com/dmc/push" />
-        <framework src="me.leolin:ShortcutBadger:1.1.17@aar" />
+        <framework src="me.leolin:ShortcutBadger:1.1.22@aar" />
         <source-file src="src/android/MiPush_SDK_Client_3_6_9.jar" target-dir="libs" />
         <!-- 防止cordova android 7.0 找不到依赖文件的情况 -->
         <source-file src="src/android/MiPush_SDK_Client_3_6_9.jar" target-dir="app/libs" />
