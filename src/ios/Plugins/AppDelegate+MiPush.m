@@ -11,7 +11,7 @@
 static AppDelegate *myAppDeleagate=nil;
 - (BOOL)application:(UIApplication*)application didFinishLaunchingWithOptions:(NSDictionary*)launchOptions
 {
-    
+
     // 使用本地通知 (本例中只是badge，但是还有alert和sound都属于通知类型,其实如果只进行未读数在appIcon显示,只需要badge就可, 这里全写上为了方便以后的使用)
     UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeBadge | UIUserNotificationTypeSound | UIUserNotificationTypeAlert categories:nil];
     // 进行注册
@@ -28,7 +28,7 @@ static AppDelegate *myAppDeleagate=nil;
 }
 
 +(AppDelegate *)delegate{
-    
+
     return  myAppDeleagate;
 }
 
@@ -88,7 +88,7 @@ static AppDelegate *myAppDeleagate=nil;
 - (void)getOperateType:(NSString*)selector code:(int) code date:(NSDictionary *)data
 {
     @try {
- 
+
     NSNumber *mCode=[NSNumber numberWithInt:code];
     NSString *ret = nil;
     if ([selector hasPrefix:@"registerMiPush:"] ) {
@@ -100,7 +100,7 @@ static AppDelegate *myAppDeleagate=nil;
         ret = @"注册App";
     }else if ([selector isEqualToString:@"bindDeviceToken:"]) {
         ret = @"绑定 PushDeviceToken";
-        [MiPushPlugin callbackWithType:@"onRegisterPush" data:@{@"regid": data[@"regid"],@"code":mCode}];
+        [MiPushPlugin callbackWithType:@"onRegisterPush" data:@{@"regId": data[@"regid"],@"code":mCode}];
     }else if ([selector isEqualToString:@"setAlias:"]) {
         ret = @"客户端设置别名";
         [MiPushPlugin callbackWithType:@"onSetAliasPush" data:@{@"alias": data[@"alias"],@"code":mCode}];
@@ -126,7 +126,7 @@ static AppDelegate *myAppDeleagate=nil;
         for (NSString *key in data[@"list"]) {
            [MiPushSDK unsetAlias:key];
         }
-        
+
     }else if ([selector isEqualToString:@"getAllTopicAsync"]) {
         ret = @"获取Topic设置信息";
         for (NSString *key in data[@"list"]) {
@@ -134,14 +134,14 @@ static AppDelegate *myAppDeleagate=nil;
         }
     }else if ([selector isEqualToString:@"getRegId"]) {
         ret = @"获取getRegId信息";
-        
+
     }else if ([selector isEqualToString:@"getAllAccount"]) {
         ret = @"获取getAllAccount信息";
         for (NSString *key in data[@"list"]) {
             [MiPushSDK unsetAccount:key];
         }
     }
-   
+
     } @catch (NSException *exception) {
         NSLog(@"PUSH 有错");
     }

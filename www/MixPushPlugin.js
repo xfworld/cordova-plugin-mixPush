@@ -131,7 +131,7 @@ MixPushPlugin.prototype.clearNotificationById = function(args,successCallback,er
 */
 MixPushPlugin.prototype.onRegisterPush = function (data) {
   data = JSON.parse(JSON.stringify(data));
-  console.log('MixPushPlugin:onRegisterPush: ' + data);
+  console.log('MixPushPlugin:onRegisterPush: ' + JSON.stringify(data));
   cordova.fireDocumentEvent('MixPushPlugin.onRegisterPush', data);
 }
 
@@ -144,7 +144,7 @@ MixPushPlugin.prototype.onRegisterPush = function (data) {
 */
 MixPushPlugin.prototype.onNotificationArrived = function (data) {
   data = JSON.parse(JSON.stringify(data));
-  console.log('MixPushPlugin:onNotificationArrived: ' + data);
+  console.log('MixPushPlugin:onNotificationArrived: ' + JSON.stringify(data));
   cordova.fireDocumentEvent('MixPushPlugin.onNotificationArrived', data);
 }
 
@@ -157,7 +157,7 @@ MixPushPlugin.prototype.onNotificationArrived = function (data) {
 */
 MixPushPlugin.prototype.onNotificationClicked = function (data) {
   data = JSON.parse(JSON.stringify(data));
-  console.log('MixPushPlugin:onNotificationClicked: ' + data);
+  console.log('MixPushPlugin:onNotificationClicked: ' + JSON.stringify(data));
   cordova.fireDocumentEvent('MixPushPlugin.onNotificationClicked', data);
 }
 
